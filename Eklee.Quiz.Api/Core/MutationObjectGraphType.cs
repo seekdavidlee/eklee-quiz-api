@@ -26,7 +26,7 @@ namespace Eklee.Quiz.Api.Core
 				.AddPrefix(configuration["Prefix"])
 				.AddPartition(x => x.QuizId)
 				.BuildTableStorage()
-				.Delete<DeleteMyQuestion, Status>(x => new Question { Id = x.Id, Owner = x.Owner }, x => new Status { Message = "Question has been removed." })
+				.Delete<DeleteMyQuestion, Status>(x => new Question { Id = x.Id, Owner = x.Owner, QuizId = x.QuizId }, x => new Status { Message = "Question has been removed." })
 				.Build();
 		}
 	}

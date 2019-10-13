@@ -9,5 +9,8 @@ namespace Eklee.Quiz.Api.Models
 
 		[Description("Owner of the Question.")]
 		public string Owner { get; set; }
+
+		[Description("QuizId of the Question.")]
+		public string QuizId { get; set; }
 	}
 }

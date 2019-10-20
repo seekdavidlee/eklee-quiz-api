@@ -9,17 +9,14 @@ namespace Eklee.Quiz.Api.Core
 	public class QueryConfigObjectGraphType : ObjectGraphType<object>
 	{
 		private const string EMAIL_ADDRESS = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
+		private const string UPN = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn";
 
 		private List<object> GetEmail(QueryExecutionContext queryExecutionContext)
 		{
 			var graphRequestContext = queryExecutionContext.RequestContext;
 			if (graphRequestContext.HttpRequest.Security != null)
 			{
-				var emailClaim = graphRequestContext.HttpRequest.Security.ClaimsPrincipal.FindFirst(x => x.Type == EMAIL_ADDRESS);
-				if (emailClaim != null)
-				{
-					return new List<object> { emailClaim.Value };
-				}
+				return new List<object> { graphRequestContext.HttpRequest.Security.ClaimsPrincipal.GetEmail() };
 			}
 			throw new NotImplementedException();
 		}

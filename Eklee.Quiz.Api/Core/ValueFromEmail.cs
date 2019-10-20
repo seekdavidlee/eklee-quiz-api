@@ -12,11 +12,8 @@ namespace Eklee.Quiz.Api.Core
 		{
 			if (graphRequestContext.HttpRequest.Security != null)
 			{
-				var emailClaim = graphRequestContext.HttpRequest.Security.ClaimsPrincipal.FindFirst(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
-				if (emailClaim != null)
-				{
-					return Task.FromResult((object)emailClaim.Value);
-				}
+				return Task.FromResult(
+					(object)graphRequestContext.HttpRequest.Security.ClaimsPrincipal.GetEmail());
 			}
 			throw new NotImplementedException();
 		}

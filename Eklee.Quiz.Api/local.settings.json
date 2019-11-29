@@ -1,0 +1,17 @@
+{
+	"IsEncrypted": false,
+	"Values": {
+		"AzureWebJobsStorage": "",
+		"FUNCTIONS_WORKER_RUNTIME": "dotnet"
+	},
+	"Connection": "UseDevelopmentStorage=true",
+	"Prefix": "dev",
+	"Security": {
+		"Audience": "",
+		"Issuers": ""
+	},
+	"Host": {
+		"LocalHttpPort": 7071,
+		"CORS": "*"
+	}
+}
